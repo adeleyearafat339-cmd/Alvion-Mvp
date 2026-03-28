@@ -1,0 +1,125 @@
+/* 1. THE MODERN COLOR PALETTE */
+:root {
+  --sidebar-bg: #1e293b;
+  --main-bg: #f8fafc;
+  --accent-blue: #3b82f6;
+  --success-green: #10b981;
+  --warning-yellow: #f59e0b;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --white: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* 2. DASHBOARD WRAPPER & SLIDE LOGIC */
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar {
+  width: 260px;
+  box-sizing: border-box; /* Fixes the blue overlap ghost! */
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 30px 20px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%); /* Slides completely off-screen */
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 260px; 
+  padding: 30px 40px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  width: calc(100% - 260px);
+  box-sizing: border-box;
+}
+
+.main-content.expanded {
+  margin-left: 0; 
+  width: 100%;
+}
+
+/* 3. LOGO & NAV LINKS */
+.logo-section { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.logo-icon { background: var(--accent-blue); padding: 5px 12px; border-radius: 8px; font-weight: 800; font-size: 20px; }
+.nav-links { list-style: none; padding: 0; }
+.nav-item { padding: 12px 15px; border-radius: 10px; margin-bottom: 8px; cursor: pointer; display: flex; gap: 12px; color: #94a3b8; transition: 0.2s; }
+.nav-item:hover, .nav-item.active { background: rgba(255, 255, 255, 0.1); color: white; }
+.logout-btn { position: absolute; bottom: 30px; left: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; padding: 10px; border-radius: 8px; cursor: pointer; }
+
+/* 4. COMPACT STAT CARDS */
+.stats-container { display: flex; justify-content: space-between; gap: 15px; margin: 25px 0; }
+.stat-box { background: white; flex: 1; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center; min-height: 90px; }
+.stat-title { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-number { font-size: 28px; font-weight: 800; margin-top: 5px; }
+
+/* 5. HEADER & BUTTONS */
+.header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.toggle-btn { background: white; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.btn-primary { background: var(--accent-blue); color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.btn-primary:hover { opacity: 0.9; }
+
+/* 6. TABLE STYLES & STATUS DROPDOWN */
+.card { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow-x: auto; }
+.leads-table { width: 100%; border-collapse: collapse; }
+.leads-table th { text-align: left; padding: 15px; background: #f1f5f9; color: var(--text-muted); font-size: 12px; text-transform: uppercase; }
+.leads-table td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+.text-link { color: var(--accent-blue); background: none; border: none; font-weight: 700; cursor: pointer; }
+.trash-btn { background: none; border: none; cursor: pointer; margin-left: 10px; filter: grayscale(1); }
+
+/* The beautiful Status Dropdown */
+.status-dropdown {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  font-family: 'Inter';
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+/* 7. THE GLOW-UP MODAL STYLES (Glassmorphism) */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.4); 
+  backdrop-filter: blur(5px); 
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+.modal-content {
+  background: white; padding: 35px 40px; border-radius: 24px; width: 420px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease-out;
+}
+.modal-content h3 { margin-top: 0; margin-bottom: 25px; color: var(--text-dark); font-size: 22px; font-weight: 800; }
+.modal-content input, .modal-content textarea {
+  width: 100%; padding: 14px 16px; margin-bottom: 15px; border: 2px solid #e2e8f0; border-radius: 12px; box-sizing: border-box; font-family: 'Inter'; font-size: 14px; background-color: #f8fafc; transition: all 0.2s ease;
+}
+.modal-content input:focus, .modal-content textarea:focus {
+  outline: none; border-color: var(--accent-blue); background-color: white; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+.modal-content button { padding: 14px !important; font-size: 15px; border-radius: 12px !important; }
+.modal-content button:active { transform: scale(0.97); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
