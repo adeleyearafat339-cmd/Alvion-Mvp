@@ -45,7 +45,7 @@ function Login() {
             <div style={{ marginBottom: '30px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                 <label style={{ fontSize: '13px', fontWeight: 'bold', color: '#334155' }}>Password</label>
-                <a href="#" style={{ fontSize: '12px', color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}>Forgot password?</a>
+                <button onClick={(e) => e.preventDefault()} style={{ background: 'none', border: 'none', padding: 0, color: '#3b82f6', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Forgot password?</button>
               </div>
               <input type="password" placeholder="••••••••" required style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', boxSizing: 'border-box' }} />
             </div>
