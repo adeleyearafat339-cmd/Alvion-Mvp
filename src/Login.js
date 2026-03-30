@@ -1,59 +1,53 @@
 import React from 'react';
-import { Mail, Lock, ArrowRight, Github, Chrome } from 'lucide-react';
+import { ArrowRight, Github, Chrome } from 'lucide-react';
 
 const Login = () => {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#0f172a', color: 'white', fontFamily: 'sans-serif' }}>
-      
-      {/* Main Container: Becomes vertical on mobile */}
-      <div style={{ display: 'flex', flex: 1, flexDirection: window.innerWidth < 768 ? 'column' : 'row' }}>
-        
-        {/* Left Side: Branding */}
-        <div style={{ flex: 1, padding: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-            <div style={{ width: '40px', height: '40px', background: '#3b82f6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>A</div>
-            <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>Alvion</h1>
-          </div>
-          
-          <h2 style={{ fontSize: window.innerWidth < 768 ? '32px' : '48px', fontWeight: '800', lineHeight: '1.1', marginBottom: '24px' }}>
-            Stop hunting for leads. <span style={{ color: '#3b82f6' }}>Start closing.</span>
-          </h2>
-          <p style={{ color: '#94a3b8', fontSize: '18px', maxWidth: '400px' }}>
-            The AI-powered workspace for high-ticket appointment setters.
-          </p>
+    <div className="min-h-screen bg-[#0f172a] flex flex-col md:flex-row font-sans">
+      {/* Left Side: Branding - Hidden or Simplified on small mobile if needed, but here we stack it */}
+      <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
+        <div className="flex items-center gap-3 mb-8 md:mb-12">
+          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white text-xl">A</div>
+          <h1 className="text-2xl font-bold text-white">Alvion</h1>
         </div>
+        
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Stop hunting for leads. <span className="text-blue-500">Start closing.</span>
+        </h2>
+        <p className="text-slate-400 text-lg md:text-xl max-w-md">
+          The AI-powered workspace built for high-ticket appointment setters.
+        </p>
+      </div>
 
-        {/* Right Side: The Form */}
-        <div style={{ flex: 1, backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-          <div style={{ width: '100%', maxWidth: '400px', backgroundColor: '#111', padding: '32px', borderRadius: '16px', border: '1px solid #222' }}>
-            <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Create your account</h3>
-            <p style={{ color: '#666', fontSize: '14px', marginBottom: '24px' }}>Start your 7-day free trial via <span style={{color: '#6366f1', fontWeight: 'bold'}}>Stripe</span></p>
+      {/* Right Side: The Form - Full width on mobile, half on desktop */}
+      <div className="w-full md:w-1/2 bg-black flex items-center justify-center p-6 md:p-12">
+        <div className="w-full max-w-md bg-[#111] p-8 rounded-2xl border border-[#222] shadow-2xl">
+          <h3 className="text-2xl font-bold text-white mb-2">Welcome back</h3>
+          <p className="text-slate-500 text-sm mb-8">Enter your details to access your workspace</p>
 
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <input type="text" placeholder="Full Name" style={{ padding: '12px', borderRadius: '8px', background: '#222', border: '1px solid #333', color: 'white' }} />
-              <input type="email" placeholder="Work Email" style={{ padding: '12px', borderRadius: '8px', background: '#222', border: '1px solid #333', color: 'white' }} />
-              <input type="password" placeholder="Password" style={{ padding: '12px', borderRadius: '8px', background: '#222', border: '1px solid #333', color: 'white' }} />
-              
-              <button style={{ padding: '14px', borderRadius: '8px', background: '#3b82f6', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                Start 7-Day Free Trial <ArrowRight size={18} />
-              </button>
-            </form>
-
-            <div style={{ margin: '24px 0', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{ flex: 1, height: '1px', background: '#333' }}></div>
-              <span style={{ color: '#666', fontSize: '12px' }}>OR CONTINUE WITH</span>
-              <div style={{ flex: 1, height: '1px', background: '#333' }}></div>
+          <form className="space-y-4">
+            <div className="space-y-2">
+              <label className="text-sm text-slate-400">Work Email</label>
+              <input type="email" className="w-full p-3 rounded-lg bg-[#222] border border-[#333] text-white focus:border-blue-500 outline-none transition-all" placeholder="name@company.com" />
             </div>
-
-            {/* Social Links */}
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', background: '#222', border: '1px solid #333', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}>
-                <Github size={18} /> Github
-              </button>
-              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', background: '#222', border: '1px solid #333', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}>
-                <Chrome size={18} /> Google
-              </button>
+            <div className="space-y-2">
+              <label className="text-sm text-slate-400">Password</label>
+              <input type="password" className="w-full p-3 rounded-lg bg-[#222] border border-[#333] text-white focus:border-blue-500 outline-none transition-all" placeholder="••••••••" />
             </div>
+            
+            <button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95">
+              Sign In <ArrowRight size={20} />
+            </button>
+          </form>
+
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[#333]"></div></div>
+            <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#111] px-2 text-slate-500">Or continue with</span></div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <button className="flex items-center justify-center gap-2 p-3 rounded-lg bg-[#222] border border-[#333] text-white hover:bg-[#2a2a2a] transition-all"><Github size={18}/> GitHub</button>
+            <button className="flex items-center justify-center gap-2 p-3 rounded-lg bg-[#222] border border-[#333] text-white hover:bg-[#2a2a2a] transition-all"><Chrome size={18}/> Google</button>
           </div>
         </div>
       </div>
